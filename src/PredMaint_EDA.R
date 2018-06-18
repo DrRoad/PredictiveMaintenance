@@ -94,7 +94,7 @@ maint$datetime <- as.POSIXct(maint$datetime,
                              format="%Y-%m-%d %I:%M:%S", 
                              tz="UTC")
 maint$comp <- as.factor(maint$comp)
-
+invis
 cat("Total number of maintenance records:", nrow(maint))
 range(maint$datetime)
 maint[c(1:5, nrow(maint)-4:0),]
@@ -158,3 +158,5 @@ ggplot(failures %>% filter(machineID < 4),
   labs(title = "Failure distribution", x = "component type", fill = "MachineID") +
   facet_wrap(~machineID, ncol=1)
   
+invisible(gc())
+
